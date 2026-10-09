@@ -20,6 +20,7 @@
 package org.apache.james.imap.processor;
 
 import static org.apache.james.imap.api.ImapConstants.SUPPORTS_ENABLE;
+import static org.apache.james.imap.api.ImapConstants.SUPPORTS_IMAP4REV2;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -95,6 +96,9 @@ public class EnableProcessor extends AbstractMailboxProcessor<EnableRequest> imp
             .flatMap(cap -> {
                 // Check if the CAPABILITY is supported at all
                 if (capabilityProcessor.getSupportedCapabilities(session).contains(cap)) {
+                    if (cap.equals(SUPPORTS_IMAP4REV2)) {
+                        return Mono.just(cap);
+                    }
                     return Flux.fromIterable(capabilities)
                         .flatMap(enableProcessor -> {
                             if (enableProcessor.getPermitEnableCapabilities(session).contains(cap)) {
