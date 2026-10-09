@@ -130,13 +130,15 @@ public abstract class AbstractConfigurableAsyncServer
     }
 
     protected void registerMBean() {
-
         try {
-            mbeanServer.registerMBean(this, new ObjectName(getMBeanName()));
+            ObjectName objectName = new ObjectName(getMBeanName());
+            if (mbeanServer.isRegistered(objectName)) {
+                mbeanServer.unregisterMBean(objectName);
+            }
+            mbeanServer.registerMBean(this, objectName);
         } catch (Exception e) {
             throw new RuntimeException("Unable to register mbean", e);
         }
-
     }
 
     protected void unregisterMBean() {
