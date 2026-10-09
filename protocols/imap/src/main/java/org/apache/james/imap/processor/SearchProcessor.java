@@ -161,6 +161,9 @@ public class SearchProcessor extends AbstractMailboxProcessor<SearchRequest> imp
 
         List<SearchResultOption> resultOptions = request.getSearchOperation().getResultOptions();
         if (resultOptions == null || resultOptions.isEmpty()) {
+            if (EnableProcessor.getEnabledCapabilities(session).contains(ImapConstants.SUPPORTS_IMAP4REV2)) {
+                return new ESearchResponse(-1, -1, ids.size(), asRanges(ids), null, highestModSeq.orElse(null), request.getTag(), request.isUseUids(), ImmutableList.of(SearchResultOption.ALL), null);
+            }
             return new SearchResponse(ids, highestModSeq.orElse(null));
         } else {
             return handleResultOptions(request, session, highestModSeq.orElse(null), ids);

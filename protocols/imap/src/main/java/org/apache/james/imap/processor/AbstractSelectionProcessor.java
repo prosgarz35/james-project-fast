@@ -145,7 +145,9 @@ abstract class AbstractSelectionProcessor<R extends AbstractMailboxSelectionRequ
                     mailboxId(responder, selected.getMailboxId());
                     flags(responder, selected);
                     exists(responder, metaData, selected);
-                    recent(responder, selected);
+                    if (!EnableProcessor.getEnabledCapabilities(session).contains(ImapConstants.SUPPORTS_IMAP4REV2)) {
+                        recent(responder, selected);
+                    }
                     uidValidity(responder, metaData);
                 })
             .flatMap(metadata -> firstUnseen(session, fullMailboxPath, responder, metadata.getFirstUnseen(), session.getSelected())
