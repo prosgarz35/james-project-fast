@@ -97,6 +97,9 @@ public class ImapParserFactory implements ImapCommandParserFactory {
             // RFC3691
             new UnselectCommandParser(statusResponseFactory),
 
+            // RFC9051
+            new UnauthenticateCommandParser(statusResponseFactory),
+
             // RFC4978
             new CompressCommandParser(statusResponseFactory),
 

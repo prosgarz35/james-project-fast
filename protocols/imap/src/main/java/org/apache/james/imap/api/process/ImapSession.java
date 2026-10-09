@@ -165,6 +165,14 @@ public interface ImapSession extends CommandDetectionSession {
     Mono<Void> deselect();
 
     /**
+     * Resets the session state back to {@link ImapSessionState#NON_AUTHENTICATED}
+     * according to RFC 9051 section 6.2.4 (UNAUTHENTICATE command).
+     */
+    default Mono<Void> unauthenticate() {
+        return Mono.empty();
+    }
+
+    /**
      * Provides the selected mailbox for this session, or <code>null</code> if
      * this session is not in {@link ImapSessionState#SELECTED} state.
      * 

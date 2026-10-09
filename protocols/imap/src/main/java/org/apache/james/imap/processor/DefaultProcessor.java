@@ -140,6 +140,7 @@ public class DefaultProcessor implements ImapProcessor {
         builder.add(new FetchProcessor(mailboxManager, statusResponseFactory, metricFactory, localCacheConfiguration));
         builder.add(new StartTLSProcessor(statusResponseFactory));
         builder.add(new UnselectProcessor(mailboxManager, statusResponseFactory, metricFactory));
+        builder.add(new UnauthenticateProcessor(mailboxManager, statusResponseFactory, metricFactory));
         builder.add(new CompressProcessor(statusResponseFactory));
         builder.add(new GetACLProcessor(mailboxManager, statusResponseFactory, metricFactory, pathConverterFactory));
         builder.add(new SetACLProcessor(mailboxManager, statusResponseFactory, metricFactory, pathConverterFactory));

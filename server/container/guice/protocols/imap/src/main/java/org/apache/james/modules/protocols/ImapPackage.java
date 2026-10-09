@@ -61,6 +61,7 @@ import org.apache.james.imap.decode.parser.StatusCommandParser;
 import org.apache.james.imap.decode.parser.StoreCommandParser;
 import org.apache.james.imap.decode.parser.SubscribeCommandParser;
 import org.apache.james.imap.decode.parser.UidCommandParser;
+import org.apache.james.imap.decode.parser.UnauthenticateCommandParser;
 import org.apache.james.imap.decode.parser.UnselectCommandParser;
 import org.apache.james.imap.decode.parser.UnsubscribeCommandParser;
 import org.apache.james.imap.decode.parser.XListCommandParser;
@@ -127,6 +128,7 @@ import org.apache.james.imap.processor.StartTLSProcessor;
 import org.apache.james.imap.processor.StatusProcessor;
 import org.apache.james.imap.processor.StoreProcessor;
 import org.apache.james.imap.processor.SubscribeProcessor;
+import org.apache.james.imap.processor.UnauthenticateProcessor;
 import org.apache.james.imap.processor.UnselectProcessor;
 import org.apache.james.imap.processor.UnsubscribeProcessor;
 import org.apache.james.imap.processor.XListProcessor;
@@ -229,6 +231,7 @@ public interface ImapPackage {
                     FetchProcessor.class,
                     StartTLSProcessor.class,
                     UnselectProcessor.class,
+                    UnauthenticateProcessor.class,
                     CompressProcessor.class,
                     GetACLProcessor.class,
                     SetACLProcessor.class,
@@ -281,6 +284,7 @@ public interface ImapPackage {
                     IdleCommandParser.class,
                     StartTLSCommandParser.class,
                     UnselectCommandParser.class,
+                    UnauthenticateCommandParser.class,
                     CompressCommandParser.class,
                     EnableCommandParser.class,
                     GetQuotaRootCommandParser.class,

@@ -67,6 +67,8 @@ public interface ImapConstants {
 
     Capability BASIC_CAPABILITIES = Capability.of(VERSION);
 
+    Capability SUPPORTS_IMAP4REV2 = Capability.of("IMAP4rev2");
+
     Capability SUPPORTS_LITERAL_PLUS = Capability.of("LITERAL+");
 
     Capability SUPPORTS_RFC3348 = Capability.of("CHILDREN");
@@ -195,6 +197,7 @@ public interface ImapConstants {
     ImapCommand STATUS_COMMAND = ImapCommand.authenticatedStateCommand("STATUS");
     ImapCommand SUBSCRIBE_COMMAND = ImapCommand.authenticatedStateCommand("SUBSCRIBE");
     ImapCommand UNSELECT_COMMAND = ImapCommand.authenticatedStateCommand("UNSELECT");
+    ImapCommand UNAUTHENTICATE_COMMAND = ImapCommand.authenticatedStateCommand("UNAUTHENTICATE");
     ImapCommand UNSUBSCRIBE_COMMAND = ImapCommand.authenticatedStateCommand("UNSUBSCRIBE");
     ImapCommand XLIST_COMMAND = ImapCommand.authenticatedStateCommand("XLIST");
     // RFC-4314 IMAP ACL
