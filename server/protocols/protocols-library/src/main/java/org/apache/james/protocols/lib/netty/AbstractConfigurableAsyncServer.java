@@ -481,8 +481,9 @@ public abstract class AbstractConfigurableAsyncServer
     protected void configureBootstrap(ServerBootstrap bootstrap) {
         super.configureBootstrap(bootstrap);
         
-        // enable tcp keep-alives
+        // enable tcp keep-alives and disable Nagle's algorithm for low latency
         bootstrap.childOption(ChannelOption.SO_KEEPALIVE, true);
+        bootstrap.childOption(ChannelOption.TCP_NODELAY, true);
     }
     
     protected abstract ChannelHandlerFactory createFrameHandlerFactory();
